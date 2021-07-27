@@ -1,0 +1,56 @@
+{% extends 'Home/main.html' %}
+
+{% block content %}
+
+<!-- {%  include 'Home/status.html' %} -->
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>FTES:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">ADD FTEs</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Resource ID</th>
+					<th>Resource</th>
+					<th>Function ID</th>
+					<th>Function_name</th>
+				</tr>
+				{% for i in resource_object %}
+					<tr>
+						<td>{{i.resource_id}}</td>
+						<td>{{i.resource}}</td>
+						<td>{{i.function_id}}</td>
+						<td>{{i.function.function_name}}</td>
+						
+					</tr>
+				{% endfor %}
+					<!-- <td>{{resource_object.function_id.function_name}}</td> -->
+			</table>
+		</div>
+	</div>
+
+	<!-- <div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+		
+			</table>
+		</div>
+	</div> -->
+
+</div>
+
+{% endblock %}

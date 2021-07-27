@@ -1,0 +1,117 @@
+
+{% extends 'Home/main.html' %}
+
+
+{% load static %}
+<!--{%  include 'Home/status.html' %}
+<script src="{% static 'scroll_request.js' %}"></script> -->
+<link rel="stylesheet"  type="text/css" href="{% static '\css\scroll.css' %}">
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-6">
+		<h5>Resources</h5>
+		<div class="row">
+			<div class="col">
+				<div class="body", style="font-size: 12.75px;color:mediumblue;">
+
+					<form method="get">
+						{{resourcemyfilter.form}}
+
+					<button class="btn btn-primary" type="submit", style="font-size: 10px;">Search</button>
+				</form>
+
+				</div>
+			</div>
+			
+		</div>
+		<span style="padding:1px;"></span>
+		<div id= "test" class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'adminresource_form' %}">Add Resources</a>
+			<div class="table-wrapper-scroll-y my-custom-scrollbar" style="position: relative;
+			height: 500px;
+			overflow: auto;">
+			<table class="table table-striped table-bordered table-sm" >
+				<tr>
+					<th>ID</th>
+					<th>Resource Name</th>
+					<th>Geo ID</th>
+                    <th>Function ID</th>
+					<th>Active</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+				{% for i in resource_object %}
+					<tr>
+						<td>{{i.resource_num}}</td>
+                        <td>{{i.resource}}</td>
+						<td style="width: 150px">{{i.geo}}</td >
+						<td style="width: 150px">{{i.function.function_name}}</td>
+						<td style="width: 100px">{{i.active}}</td>
+						<td style="width: 80px"><a class="far fa-edit" href="{% url 'adminresourceUpdate' i.resource_num %}">Update</a></td>
+						<td style="width: 70px"><a class="far fa-edit" href="{% url 'adminresourceDelete' i.resource_num %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+					<!-- <td>{{resource_object.function_id.function_name}}</td> -->
+			</table>
+		    </div>
+		</div>
+	</div>
+
+	<div class="col-6">
+		<h5>Users</h5>
+		<div class="row">
+			<div class="col">
+				<div class="body", style="font-size: 12.75px;color:mediumblue;">
+
+					<form method="get">
+						{{usermyfilter.form}}
+
+					<button class="btn btn-primary" type="submit", style="font-size: 10px;">Search</button>
+				</form>
+
+				</div>
+			</div>
+			
+		</div>
+		<span style="padding:1px;"></span>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'adminuser_form' %}">Add Users</a>
+			<div class="table-wrapper-scroll-y my-custom-scrollbar" style="position: relative;
+			height: 500px;
+			overflow: auto;">
+			<table class="table table-striped table-bordered table-sm" >
+				<tr>
+                    <th>ID</th>
+					<th>User ID</th>
+					<th>Name</th>
+					<th>Role</th>
+                    <th>BU</th>
+					<th>Lastlogin</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+				{% for i in users_object %}
+					<tr>
+                        <td>{{i.id}}</td>
+						<td>{{i.userid}}</td>
+                        <td>{{i.givenname}}</td>
+                        <td>{{i.role}}</td>
+						<td>{{i.bu}}</td>
+						<td>{{i.lastlogin}}</td>
+						<td style="width: 80px"><a class="far fa-edit" href="{% url 'adminuserUpdate' i.id %}">Update</a></td>
+						<td style="width: 70px"><a class="far fa-edit" href="{% url 'adminuserDelete' i.id %}">Delete</a></td>
+					
+						
+					</tr>
+				{% endfor %}
+		
+			</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

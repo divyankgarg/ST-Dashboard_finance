@@ -1,0 +1,31 @@
+{%  extends 'Home/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table style="height: 100px;">
+				{{ form.as_table }}
+				</table>
+				<!-- <ul class="contactList">
+				<li id="subject" class="contact">{{ form.userid }}</li>
+				<li id="email" class="contact">{{ form.givenname }}</li>
+				<li id="message" class="contact">{{ form.givenname }}</li>
+				<li id="message" class="contact">{{ form.role }}</li>
+				<li id="message" class="contact">{{ form.lastlogin }}</li>
+			 	</ul> -->
+				
+				<input type="submit" name="Submit">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

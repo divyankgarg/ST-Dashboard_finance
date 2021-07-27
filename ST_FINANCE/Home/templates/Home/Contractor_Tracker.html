@@ -1,0 +1,99 @@
+{% extends 'Home/main.html' %}
+
+{% block content %}
+
+<!-- {%  include 'Home/status.html' %} -->
+
+<!-- <br>
+
+<div class="row">
+	<div class="col">
+		<h5>Contractor:</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Vendor</th>
+					<th>Geography</th>
+					<th>Manager</th>
+					<th>rate</th>
+					<th>qtr_rate</th>
+					<th>start_date</th>
+					<th>end_date</th>
+					<th>status</th>
+					<th>comments</th>
+				</tr>
+
+				{% for i in contractorTrackerobject %}
+					<tr>
+						<td>{{i.name}}</td>
+						<td>{{i.vendor}}</td>
+						<td>{{i.geo_id}}</td>
+						<td>{{i.manager}}</td>
+						<td>{{i.rate}}</td>
+						<td>{{i.qtr_rate}}</td>
+						<td>{{i.start_date}}</td>
+						<td>{{i.end_date}}</td>
+						<td>{{i.status}}</td>
+						<td>{{i.comments}}</td>
+					</tr>
+
+
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div> -->
+<div class="row">
+	<div class="col-10">
+		<h5>Contractor</h5>
+		<a class="btn-sm btn-secondary" href="{% url 'export_csv' %}">Export CSV</a>
+		<span style="padding:1px;"></span>
+		<div id= "test" class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'contract_tracker_form' %}">Add Contractor</a>
+			<div class="table-wrapper-scroll-y my-custom-scrollbar" style="position: relative;
+			height: 500px;
+			overflow: auto;">
+			<table class="table table-striped table-bordered table-sm" >
+				<tr>
+					<th>Name</th>
+					<th>Vendor</th>
+					<th>Geography</th>
+					<th>Manager</th>
+					<th>rate</th>
+					<th>qtr_rate</th>
+					<th>start_date</th>
+					<th>end_date</th>
+					<th>status</th>
+					<th>comments</th>
+					<!-- <th>updates</th> -->
+					<th>delete</th>
+				</tr>
+
+				{% for i in contractorTrackerobject %}
+					<tr>
+						<td>{{i.name}}</td>
+						<td>{{i.vendor}}</td>
+						<td>{{i.geo_id}}</td>
+						<td>{{i.manager}}</td>
+						<td>{{i.rate}}</td>
+						<td>{{i.qtr_rate}}</td>
+						<td>{{i.start_date}}</td>
+						<td>{{i.end_date}}</td>
+						<td>{{i.status}}</td>
+						<td>{{i.comments}}</td>
+						<!-- <td style="width: 80px"><a class="far fa-edit" href="{% url 'contractorDelete' i.name %}">Update</a></td> -->
+						<td style="width: 70px"><a class="far fa-edit" href="{% url 'contractorDelete' i.name %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+					<!-- <td>{{resource_object.function_id.function_name}}</td> -->
+			</table>
+		    </div>
+		</div>
+	</div>
+</div>
+		
+
+
+{% endblock %}
