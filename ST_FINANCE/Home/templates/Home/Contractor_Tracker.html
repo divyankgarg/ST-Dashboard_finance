@@ -48,8 +48,24 @@
 <div class="row">
 	<div class="col-10">
 		<h5>Contractor</h5>
-		<a class="btn-sm btn-secondary" href="{% url 'export_csv' %}">Export CSV</a>
+		<div class="row">
+			<div class="col">
+				<div class="body", style="font-size: 12.75px;color:mediumblue;">
+
+					<form method="get">
+						{{contractormyfilter.form}}
+
+					<button class="btn btn-primary" type="submit", style="font-size: 10px;">Search</button>
+				</form>
+
+				</div>
+			</div>
+			
+		</div>
+		<!-- <span style="padding:2px;"></span>
+		<a class="btn-sm btn-secondary float-right" href="{% url 'export_csv' %}">Export CSV</a> -->
 		<span style="padding:1px;"></span>
+		
 		<div id= "test" class="card card-body">
 			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'contract_tracker_form' %}">Add Contractor</a>
 			<div class="table-wrapper-scroll-y my-custom-scrollbar" style="position: relative;
@@ -67,7 +83,7 @@
 					<th>end_date</th>
 					<th>status</th>
 					<th>comments</th>
-					<!-- <th>updates</th> -->
+					<th>updates</th>
 					<th>delete</th>
 				</tr>
 
@@ -82,8 +98,8 @@
 						<td>{{i.start_date}}</td>
 						<td>{{i.end_date}}</td>
 						<td>{{i.status}}</td>
-						<td>{{i.comments}}</td>
-						<!-- <td style="width: 80px"><a class="far fa-edit" href="{% url 'contractorDelete' i.name %}">Update</a></td> -->
+						<td >{{i.comments}}</td>
+						<td style="width: 80px"><a class="far fa-edit" href="{% url 'contractorUpdate' i.name %}">Update</a></td>
 						<td style="width: 70px"><a class="far fa-edit" href="{% url 'contractorDelete' i.name %}">Delete</a></td>
 					</tr>
 				{% endfor %}

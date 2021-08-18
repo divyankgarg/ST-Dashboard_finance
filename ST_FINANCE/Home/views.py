@@ -176,7 +176,10 @@ def userDelete(request,pk):
 
 def contractorTracker_view(request):
 	contractorTrackerobject=ContractorTracker.objects.all()
-	context={'contractorTrackerobject':contractorTrackerobject}
+	#contractor filter
+	contractormyfilter=ContractorFilter(request.GET, queryset=contractorTrackerobject)
+	contractor_object=contractormyfilter.qs
+	context={'contractorTrackerobject':contractorTrackerobject,'contractor_object':contractor_object}
 	return render(request,'Home/Contractor_Tracker.html',context)
 
 def contractorADD(request):
@@ -190,6 +193,18 @@ def contractorADD(request):
 
 	context = {'form':form}
 	return render(request, 'Home/contract_tracker_form.html', context)
+
+def contractorUpdate(request,pk):
+	tracker_object=ContractorTracker.objects.get(name=pk)
+	form=ContractorTrackerADD(instance=tracker_object)
+	if request.method == 'POST':
+		#print('Printing POST:', request.POST)
+		form = ContractorTrackerADD(request.POST,instance=tracker_object)
+		if form.is_valid():
+			form.save()
+			return redirect('/ContractorTracker')
+	context={'form':form}
+	return render(request, 'Home/adminresource_form.html', context)
 
 def contractorDelete(request,pk):
 	tracker_object=ContractorTracker.objects.get(name=pk)

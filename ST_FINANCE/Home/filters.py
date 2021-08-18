@@ -14,3 +14,10 @@ class UserFilter(django_filters.FilterSet):
         model = Users
         fields= '__all__'
         exclude=['lastlogin', 'userpass','givenname']
+
+class ContractorFilter(django_filters.FilterSet):
+    # resource=CharFilter(field_name='givenname',lookup_expr='icontains',label='Name')
+    class Meta:
+        model = ContractorTracker
+        fields= '__all__'
+        exclude=['end_date', 'start_date','status','comments']

@@ -18,6 +18,7 @@ urlpatterns = [
     path('Admin_User_Delete/<str:pk>/',views.userDelete,name='adminuserDelete'),
     path('ContractorTracker/', views.contractorTracker_view,name='contract_tracker_page'),
     path('ContractorTracker_ADD/',views.contractorADD,name='contract_tracker_form'),
+    path('ContractorTracker_Update/<str:pk>/',views.contractorUpdate,name='contractorUpdate'),
     path('Contractor_Delete/<str:pk>/',views.contractorDelete,name='contractorDelete'),
     path('Export_csv/',views.export,name='export_csv'),
 ]
