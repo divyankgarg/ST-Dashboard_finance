@@ -178,8 +178,9 @@ def contractorTracker_view(request):
 	contractorTrackerobject=ContractorTracker.objects.all()
 	#contractor filter
 	contractormyfilter=ContractorFilter(request.GET, queryset=contractorTrackerobject)
-	contractor_object=contractormyfilter.qs
-	context={'contractorTrackerobject':contractorTrackerobject,'contractor_object':contractor_object}
+	contractorTrackerobject=contractormyfilter.qs
+	context={'contractorTrackerobject':contractorTrackerobject,
+	'contractormyfilter':contractormyfilter}
 	return render(request,'Home/Contractor_Tracker.html',context)
 
 def contractorADD(request):

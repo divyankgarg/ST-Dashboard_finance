@@ -143,9 +143,9 @@ class Users(models.Model):
 class ContractorTracker(models.Model):
     name = models.CharField(max_length=64)
     vendor = models.CharField(max_length=64)
-    geo_id = models.IntegerField(blank=True, null=True)
+    geo = models.ForeignKey(Geography, on_delete=models.CASCADE, null=True)#models.IntegerField(blank=True, null=True) 
     manager = models.CharField(max_length=32, blank=True, null=True)
-    function_id = models.IntegerField(blank=True, null=True)
+    function = models.ForeignKey(Functions, on_delete=models.CASCADE, null=True)#models.IntegerField(blank=True, null=True) 
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     rate = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)

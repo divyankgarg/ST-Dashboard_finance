@@ -62,9 +62,9 @@
 			</div>
 			
 		</div>
-		<!-- <span style="padding:2px;"></span>
-		<a class="btn-sm btn-secondary float-right" href="{% url 'export_csv' %}">Export CSV</a> -->
 		<span style="padding:1px;"></span>
+		<a class="btn-sm btn-secondary float-right" href="{% url 'export_csv' %}">Export CSV</a>
+		<!-- <span style="padding:1px;"></span> -->
 		
 		<div id= "test" class="card card-body">
 			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'contract_tracker_form' %}">Add Contractor</a>
@@ -77,6 +77,7 @@
 					<th>Vendor</th>
 					<th>Geography</th>
 					<th>Manager</th>
+					<th>Function</th>
 					<th>rate</th>
 					<th>qtr_rate</th>
 					<th>start_date</th>
@@ -91,8 +92,9 @@
 					<tr>
 						<td>{{i.name}}</td>
 						<td>{{i.vendor}}</td>
-						<td>{{i.geo_id}}</td>
+						<td>{{i.geo}}</td>
 						<td>{{i.manager}}</td>
+						<td>{{i.function.function_name}}</td>
 						<td>{{i.rate}}</td>
 						<td>{{i.qtr_rate}}</td>
 						<td>{{i.start_date}}</td>
