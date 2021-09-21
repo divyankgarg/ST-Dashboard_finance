@@ -159,3 +159,27 @@ class ContractorTracker(models.Model):
 
     def __str__(self):
         return self.name
+
+class PurchaseOrders(models.Model):
+    po_id = models.AutoField(primary_key=True)
+    po_number = models.CharField(max_length=11, blank=True, null=True)
+    po_date = models.DateField(blank=True, null=True)
+    pr_number = models.CharField(max_length=11, blank=True, null=True)
+    pr_date = models.DateField(blank=True, null=True)
+    function_id = models.IntegerField(blank=True, null=True)
+    transaction_id = models.IntegerField()
+    account_number = models.IntegerField(blank=True, null=True)
+    dept_number = models.IntegerField(blank=True, null=True)
+    project_code = models.IntegerField(blank=True, null=True)
+    vendor_name = models.CharField(max_length=40, blank=True, null=True)
+    requestor = models.CharField(max_length=30, blank=True, null=True)
+    status = models.CharField(max_length=6, blank=True, null=True)
+    amount = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    lastupdated = models.DateTimeField(db_column='lastUpdated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'purchase_orders'
+
+    def __str__(self):
+        return self.po_id

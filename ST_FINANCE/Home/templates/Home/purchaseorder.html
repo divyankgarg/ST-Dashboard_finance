@@ -1,0 +1,96 @@
+{% extends 'Home/main.html' %}
+
+{% block content %}
+
+<!-- {%  include 'Home/status.html' %} -->
+
+<br>
+
+<div class="row">
+	<div class="col">
+		<h5>PO:</h5>
+		<div class="row">
+			<div class="col">
+				<div class="body", style="font-size: 12.75px;color:mediumblue;">
+
+					<form method="get">
+						{{POfilter.form}}
+
+					<button class="btn btn-primary" type="submit", style="font-size: 10px;">Search</button>
+				</form>
+
+				</div>
+			</div>
+			
+		</div>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="{% url 'FTE_page' %}">ADD FTEs</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th>Po Number</th>
+					<th>Po Date</th>
+					<th>Pr Number</th>
+					<th>PR Date</th>
+					<!-- <th>BU</th> -->
+					<th>Function ID</th>
+					<th>Project Code</th>
+					<th>Transaction ID</th>
+					<th>Account Number</th>
+					<th>Debt Number</th>
+					<th>Vendor Name</th>
+					<th>Requestor</th>
+                    <th>Amount</th>
+					<th>Status</th>
+					
+				</tr>
+
+				{% for i in purchaseorder_object %}
+					<tr>
+						<td>{{i.po_number}}</td>
+						<td>{{i.po_date}}</td>
+						<td>{{i.pr_number}}</td>
+						<td>{{i.pr_date}}</td>
+						<td>{{i.function_id}}</td>
+						<td>{{i.project_code}}</td>
+						<td>{{i.transaction_id}}</td>
+						<td>{{i.account_number}}</td>
+						<td>{{i.dept_number}}</td>
+						<td >{{i.vendor_name}}</td>
+                        <td >{{i.requestor}}</td>
+                        <td >{{i.amount}}</td>
+						<td>{{i.status}}</td>
+					</tr>
+
+
+				{% endfor %}
+
+
+					<!-- <td>{{resource_object.function_id.function_name}}</td> -->
+			</table>
+		</div>
+	</div>
+
+	<!-- <div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+		
+			</table>
+		</div>
+	</div> -->
+
+</div>
+
+{% endblock %}
+
+<!---->

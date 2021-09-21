@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import LaborAllocations, Resources, Users, Projects, Programs, BuList, ContractorTracker
+from .models import *
 
 
 class LaborAllocationForm(ModelForm):
@@ -36,3 +36,9 @@ class ContractorTrackerADD(ModelForm):
 		model=ContractorTracker
 		fields= '__all__'
 		#, 'active', 'project_type', 'bu_id', 'project_description'
+
+# class PurchaseOrdersADD(ModelForm):
+# 	class Meta:
+# 		model=PurchaseOrders
+# 		fields= '__all__'
+# 		#, 'active', 'project_type', 'bu_id', 'project_description'

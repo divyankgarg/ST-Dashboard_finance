@@ -215,13 +215,21 @@ def contractorDelete(request,pk):
 	context={'item': tracker_object}
 	return render(request, 'Home/contractor_delete.html', context)
 
+def purschase_order_view(request):
+	purchaseorder_object=PurchaseOrders.objects.all()
+	#resource filter
+	POfilter=PurchaseOrderFilter(request.GET, queryset=purchaseorder_object)
+	purchaseorder_object=POfilter.qs
+	context={'purchaseorder_object':purchaseorder_object,'POfilter':POfilter}
+	return render(request,'Home/purchaseorder.html',context)
+
 def export(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Vendor', 'Geo_id', 'Manager'])
+    writer.writerow(['Name', 'Vendor', 'Geo', 'Manager'])
 
-    for member in ContractorTracker.objects.all().values_list('name', 'vendor', 'geo_id', 'manager'):
+    for member in ContractorTracker.objects.all().values_list('name', 'vendor', 'geo', 'manager'):
         writer.writerow(member)
 
     response['Content-Disposition'] = 'attachment; filename="contractor.csv"'

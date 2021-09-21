@@ -21,3 +21,10 @@ class ContractorFilter(django_filters.FilterSet):
         model = ContractorTracker
         fields= '__all__'
         exclude=['end_date', 'start_date','status','comments']
+
+class PurchaseOrderFilter(django_filters.FilterSet):
+    # resource=CharFilter(field_name='givenname',lookup_expr='icontains',label='Name')
+    class Meta:
+        model = PurchaseOrders
+        fields= ['status',]
+        # exclude=['lastupdated']
